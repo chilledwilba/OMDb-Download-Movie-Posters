@@ -10,12 +10,12 @@ Year: 2014
 
 XlsxWriter is used to ouput OMDb information to an Excel Spreadsheet
 
-2 methods are used to download movie posters:
+Two methods are used to download movie posters:
 1. Using the fetched movie poster url
 2. OMDb Poster API 
+<br>
 
 ##Dependencies
-
 Requires [OMDb API Key](http://www.omdbapi.com/apikey.aspx)
 
 Python version 3.7.1 or newer
