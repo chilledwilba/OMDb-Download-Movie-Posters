@@ -16,6 +16,7 @@ Two methods are used to download movie posters:
 <br>
 
 ##Dependencies
+<br>
 Requires [OMDb API Key](http://www.omdbapi.com/apikey.aspx)
 
 Python version 3.7.1 or newer
