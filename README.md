@@ -8,13 +8,15 @@ Year: 2014
 <br>
 
 <b>Spreadsheet</b><br>
-XlsxWriter is used to ouput OMDb information to an Excel Spreadsheet. The header fields can be edited inside of the `CreateExcelSpreadSheet.py` file.<br>
+XlsxWriter is used to output OMDb information to an Excel Spreadsheet. The header fields can be edited inside of the `CreateExcelSpreadSheet.py` file.<br>
 ![excel-image](https://github.com/chilledwilba/OMDb-Download-Movie-Posters/blob/master/images/excel-image.PNG)
 
 <b>Download Posters</b><br>
 Two methods are used to download the movie posters:
 1. Using the fetched movie poster url
-2. OMDb Poster API 
+2. OMDb Poster API
+
+![posters-image](https://github.com/chilledwilba/OMDb-Download-Movie-Posters/blob/master/images/Posters-image'.PNG)
 
 ## Dependencies
 
@@ -39,3 +41,6 @@ How to run the project in a virtual environment
 8. python Main.py
 
 ![venv-cmd-gif](https://github.com/chilledwilba/OMDb-Download-Movie-Posters/blob/master/images/venv-cmd-gif.gif)
+
+
+
