@@ -22,6 +22,6 @@ XlsxWriter is used to ouput OMDb information to an Excel Spreadsheet
 
 
 ## Examples
-![venv-cmd-gif](https://github.com/chilledwilba/OMDb-Download-Movie-Posters/images/gif_venv_cmd.gif)
+![venv-cmd-gif](https://github.com/chilledwilba/OMDb-Download-Movie-Posters/blob/master/images/gif_venv_cmd.gif)
 
 
