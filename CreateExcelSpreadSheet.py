@@ -1,4 +1,5 @@
 import xlsxwriter
+from Main import create_folder
 
 
 # region Field Objects/ Child Objects | String, Number, ObjectVar, URL, dict
@@ -65,8 +66,11 @@ class DictField(ParentField):
 # endregion
 
 
-def main(movies, excel_dir):
-    workbook = xlsxwriter.Workbook('{excel_dir}Movie Stats.xlsx'.format(excel_dir=excel_dir))
+def main(movies, excel_dir, excel_file_name):
+    # Check if directory exists / create directory
+    create_folder(excel_dir)
+    workbook = xlsxwriter.Workbook('{excel_dir}{excel_file_name}'.format(excel_dir=excel_dir,
+                                                                         excel_file_name=excel_file_name))
     worksheet = workbook.add_worksheet()
 
     # Formats
