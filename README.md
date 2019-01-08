@@ -29,7 +29,12 @@ Modules
 * XlsxWriter
 
 ## Running The Project
-How to run the project in a virtual environment
+
+<b>Easist Method</b><br>
+[Download the executable](https://github.com/chilledwilba/OMDb-Download-Movie-Posters/releases/download/v1.0/OMDb-Poster-Excel-v1.0.exe)
+
+
+<b>How to run the project in a virtual environment</b><br>
 
 1. [Download & install python ](https://www.python.org/)
 2. Open CMD and run: pip install virtualenv
@@ -41,6 +46,3 @@ How to run the project in a virtual environment
 8. python Main.py
 
 ![venv-cmd-gif](https://github.com/chilledwilba/OMDb-Download-Movie-Posters/blob/master/images/run-venv-cmd-gif.gif)
-
-
-
