@@ -40,7 +40,7 @@ How to run the project in a virtual environment
 7. pip install requests
 8. python Main.py
 
-![venv-cmd-gif](https://github.com/chilledwilba/OMDb-Download-Movie-Posters/blob/master/images/venv-cmd-gif.gif)
+![venv-cmd-gif](https://github.com/chilledwilba/OMDb-Download-Movie-Posters/blob/master/images/run-venv-cmd-gif.gif)
 
 
 
