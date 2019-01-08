@@ -127,7 +127,7 @@ def get_json_field_data(movie, key):
 
 
 if __name__ == "__main__":
-    option = 2
+    option = 1
     names_list = []
 
     # Search Folder
