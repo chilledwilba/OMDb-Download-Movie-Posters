@@ -14,19 +14,11 @@ api_key = 'ENTER YOUR API KEY'
 poster_dir = '_Output/Movie Posters/'
 excel_dir = '_Output/'
 excel_file_name = 'Movie Stats.xlsx'
+txt_test_file = 'Test-Movie-Names.txt'
+read_in_movies_option = 1
 
 
-def print_program_details():
-    program_details = [
-        __program_name__,
-        __author__,
-        __version__,
-        os.path.dirname(os.path.realpath(__file__))]
-
-    for detail in program_details:
-        print(detail)
-
-
+# region Get list of potential movie names
 def get_main_directory():
     root = Tk()
     root.withdraw()
@@ -42,7 +34,8 @@ def get_list_of_sub_directory_names(path):
 def get_list_of_txt_lines(file):
     if os.path.exists(file):
         return [line.rstrip('\n') for line in open(file)]
-    print('{0} doesnt exist'.format(file))
+    print('{file} doesnt exist'.format(file=file))
+# endregion
 
 
 def create_movie_object_list(sub_names):
@@ -143,7 +136,27 @@ def get_json_field_data(movie, key):
         return None
 
 
-def check_api_key():
+def print_program_details():
+    program_details = [
+        __program_name__,
+        __author__,
+        __version__,
+        os.path.dirname(os.path.realpath(__file__))]
+
+    for detail in program_details:
+        print(detail)
+
+
+def check_internet_connection():
+    try:
+        requests.get('http://www.google.com', timeout=1)
+        return True
+    except requests.ConnectionError:
+        print('No Internet Connection')
+        return False
+
+
+def api_key_validate():
     params = dict(
         apikey=api_key,
         t='1'
@@ -156,30 +169,42 @@ def check_api_key():
     return False
 
 
-if __name__ == "__main__":
-    print_program_details()
-
-    option = 1
-    names_list = []
-
-    # Check api key is valid
-    if check_api_key() is False:
+def check_api_key():
+    global api_key
+    if api_key_validate() is False:
         api_key = input('Enter apikey: ')
-        if check_api_key() is False:
+        if api_key_validate() is False:
             print('Invalid api key: {api_key}'.format(api_key=api_key))
-            option = -1
+            return False
+    return True
 
-    # Search Folder
+
+def get_list_of_potential_move_names():
     # Using tkinter to open file dialog and select parent directory
-    if option == 1:
-        mainDirectory = get_main_directory()
-        if mainDirectory != '':
-            names_list = get_list_of_sub_directory_names(mainDirectory)
+    if read_in_movies_option == 1:
+        main_directory = get_main_directory()
+        if main_directory != '':
+            return get_list_of_sub_directory_names(main_directory)
 
     # Reads in txt file to test file names
-    if option == 2:
-        names_list = get_list_of_txt_lines('Test-Movie-Names.txt')
+    if read_in_movies_option == 2:
+        return get_list_of_txt_lines(txt_test_file)
 
+
+if __name__ == "__main__":
+    names_list = []
+
+    print_program_details()
+
+    run = check_internet_connection()
+
+    if run is True:
+        run = check_api_key()
+
+    if run is True:
+        names_list = get_list_of_potential_move_names()
+
+    # empty list = False, list with values = True
     if names_list:
         movieObjects = create_movie_object_list(names_list)
 
