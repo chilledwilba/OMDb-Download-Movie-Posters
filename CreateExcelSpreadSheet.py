@@ -65,8 +65,8 @@ class DictField(ParentField):
 # endregion
 
 
-def main(movies):
-    workbook = xlsxwriter.Workbook('Movie Stats.xlsx')
+def main(movies, excel_dir):
+    workbook = xlsxwriter.Workbook('{excel_dir}Movie Stats.xlsx'.format(excel_dir=excel_dir))
     worksheet = workbook.add_worksheet()
 
     # Formats

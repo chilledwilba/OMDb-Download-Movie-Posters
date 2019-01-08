@@ -7,7 +7,8 @@ import CreateExcelSpreadSheet
 
 # SET API KEY
 apiKey = 'ENTER YOUR API KEY'
-poster_dir = 'Movie Posters/'
+poster_dir = '_Output/Movie Posters/'
+excel_dir = '_Output/'
 
 
 def get_main_directory():
@@ -155,7 +156,8 @@ if __name__ == "__main__":
 
         # Create Excel Spread Sheet
         print('CREATE EXCEL SPREADSHEET...')
-        CreateExcelSpreadSheet.main(movieObjects)
+        create_folder(excel_dir)
+        CreateExcelSpreadSheet.main(movieObjects, excel_dir)
 
         # Download Posters
         print('DOWNLOAD POSTERS...')
