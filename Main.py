@@ -5,11 +5,26 @@ import requests
 from MovieObject import MovieObject
 import CreateExcelSpreadSheet
 
+__program_name__ = 'OMDb-Download-Movie-Posters'
+__author__ = 'by William Jordan'
+__version__ = 'v1.0'
+
 # SET API KEY
-apiKey = 'ENTER YOUR API KEY'
+api_key = 'ENTER YOUR API KEY'
 poster_dir = '_Output/Movie Posters/'
 excel_dir = '_Output/'
 excel_file_name = 'Movie Stats.xlsx'
+
+
+def print_program_details():
+    program_details = [
+        __program_name__,
+        __author__,
+        __version__,
+        os.path.dirname(os.path.realpath(__file__))]
+
+    for detail in program_details:
+        print(detail)
 
 
 def get_main_directory():
@@ -41,7 +56,7 @@ def create_movie_object_list(sub_names):
 def search_omdb(movie_objects):
     for movie in movie_objects:
         params = dict(
-            apikey=apiKey,
+            apikey=api_key,
             t=movie.FileMovieTitle,
             y=movie.FileYear,
             r='json'
@@ -85,7 +100,7 @@ def amazon_poster_download(movie, name):
 def omdb_api_poster_download(movie, name):
     imdb_id = get_json_field_data(movie, 'imdbID')
     params = dict(
-        apikey=apiKey,
+        apikey=api_key,
         i=imdb_id
     )
     url = ' http://img.omdbapi.com/?'
@@ -128,9 +143,31 @@ def get_json_field_data(movie, key):
         return None
 
 
+def check_api_key():
+    params = dict(
+        apikey=api_key,
+        t='1'
+    )
+    url = 'http://www.omdbapi.com/?'
+    resp = requests.get(url=url, params=params)
+
+    if resp.json()['Response'] == 'True':
+        return True
+    return False
+
+
 if __name__ == "__main__":
+    print_program_details()
+
     option = 1
     names_list = []
+
+    # Check api key is valid
+    if check_api_key() is False:
+        api_key = input('Enter apikey: ')
+        if check_api_key() is False:
+            print('Invalid api key: {api_key}'.format(api_key=api_key))
+            option = -1
 
     # Search Folder
     # Using tkinter to open file dialog and select parent directory
@@ -147,18 +184,21 @@ if __name__ == "__main__":
         movieObjects = create_movie_object_list(names_list)
 
         # Print out movies - title, year, filename
-        print('READ IN MOVIES...')
+        print('\nREAD IN MOVIES...')
         for m in movieObjects:
             print(str(m))
 
         # Search OMDb fill objects with data
-        print('SEARCH OMDB...')
+        print('\nSEARCH OMDB...')
         search_omdb(movieObjects)
 
         # Create Excel Spread Sheet
-        print('CREATE EXCEL SPREADSHEET...')
+        print('\nCREATE EXCEL SPREADSHEET...')
         CreateExcelSpreadSheet.main(movieObjects, excel_dir, excel_file_name)
 
         # Download Posters
-        print('DOWNLOAD POSTERS...')
+        print('\nDOWNLOAD POSTERS...')
         download_posters(movieObjects)
+
+        # Complete
+        print('\nComplete')
