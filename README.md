@@ -30,7 +30,7 @@ Modules
 
 ## Running The Project
 
-<b>Easist Method</b><br>
+<b>Easiest Method</b><br>
 [Download the executable](https://github.com/chilledwilba/OMDb-Download-Movie-Posters/releases/download/v1.0/OMDb-Poster-Excel-v1.0.exe)
 
 
