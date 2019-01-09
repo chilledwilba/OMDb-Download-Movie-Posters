@@ -179,7 +179,7 @@ def check_api_key():
     return True
 
 
-def get_list_of_potential_move_names():
+def get_list_of_potential_movie_names():
     # Using tkinter to open file dialog and select parent directory
     if read_in_movies_option == 1:
         main_directory = get_main_directory()
@@ -202,7 +202,7 @@ if __name__ == "__main__":
         run = check_api_key()
 
     if run is True:
-        names_list = get_list_of_potential_move_names()
+        names_list = get_list_of_potential_movie_names()
 
     # empty list = False, list with values = True
     if names_list:
