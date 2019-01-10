@@ -28,6 +28,11 @@ def get_main_directory():
 
 def get_list_of_sub_directory_names(path):
     files = os.listdir(path)
+
+    # Remove file extensions eg The Incredibles.mkv -> The Incredibles
+    for i in range(len(files)):
+        files[i] = os.path.splitext(files[i])[0]
+
     return files
 
 
